@@ -1,0 +1,9 @@
+.title {
+  color: red;
+}
+
+.title-div {
+  display: flex;
+
+  align-items: center;
+}
