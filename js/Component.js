@@ -1,6 +1,6 @@
 class Component {
-  constructor(classGame, x, y, w, h, imageScr) {
-    this.game = classGame;
+  constructor(x, y, w, h, imageScr, context) {
+    this.context = context;
     this.x = x;
     this.y = y;
     this.width = w;
@@ -10,12 +10,8 @@ class Component {
   }
 
   drawComponent() {
-    this.game.context.drawComponent(
-      this.img,
-      this.x,
-      this.y,
-      this.width,
-      this.height
-    );
+    console.log(this.img);
+
+    this.context.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 }

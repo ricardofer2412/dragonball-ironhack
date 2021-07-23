@@ -3,37 +3,68 @@
 // const context = canvas.getContext("2d");
 
 class Game {
-  constructor() {
-    this.canvas = document.querySelector("canvas");
-    this.context = this.canvas.getContext("2d");
-    this.player = new Player(25, 350, 40, 75, "../images/goku1.png");
+  constructor(canvas, context) {
+    this.canvas = canvas;
+    this.context = context;
+    this.player = new Player(
+      25,
+      350,
+      40,
+      75,
+      "./images/goku1.png",
+      this.context
+    );
+
+    this.enemy1 = new Player(
+      500,
+      200,
+      50,
+      70,
+      "./images/enemies/topp1.png",
+      this.context
+    );
     this.background = new Image();
+    this.background.src = "./images/Namek.png";
+    this.score = 0;
+    this.blast = new Blast(
+      500,
+      100,
+      50,
+      50,
+      "./images/enemies/topp1.png",
+      this.context
+    );
   }
 
   start() {
-    this.drawBackground(this.context, this.background);
     this.drawLoop();
-    this.player.move(this.context);
+    this.player.move();
   }
 
   drawLoop() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.player.draw(this.context);
+    this.drawBackground();
+    this.player.draw();
+    this.enemy1.draw();
+
+    addEventListener("click", (event) => {
+      console.log(event);
+      // const blast = this.blast;
+    });
+
     requestAnimationFrame(() => {
       this.drawLoop();
     });
   }
 
-  //   requestAnimationFrame(this.drawLoop);
-  // }
-
-  drawBackground(context, background) {
-    console.log("background");
-
-    background.onload = function () {
-      context.drawImage(background, 0, 0);
-    };
-    this.background.src = "../images/Namek.png";
+  drawBackground() {
+    this.context.drawImage(
+      this.background,
+      0,
+      0,
+      this.canvas.width,
+      this.canvas.height
+    );
   }
 }
 
