@@ -7,19 +7,12 @@ class Player {
     this.h = h;
     this.img = new Image();
     this.img.src = imageSrc;
-    this.kiBlast1 = new Image();
-    this.kiBlast1.src = "./images/kiBlast1.png";
+    this.blast;
+    this.kiBlastArray = [];
   }
 
   draw() {
     this.context.drawImage(this.img, this.x, this.y, this.w, this.h);
-  }
-
-  drawKiBlast() {
-    // this.context.drawImage(this.kiBlast1, 0, 0, 20, 20);
-    this.context.fillStyle = "purple";
-    this.context.fillRect(500, 100, 30, 30);
-    console.log("Blast");
   }
 
   move() {
@@ -56,9 +49,31 @@ class Player {
           break;
         case "KeyA":
           this.img.src = "../images/gokuAttack.png";
-          this.drawKiBlast();
+          this.blast = new Blast(
+            this.x + 2,
+            this.y,
+            50,
+            50,
+            "./images/kiBlast1.png",
+            this.context,
+            {
+              x: 1,
+              y: 1,
+            }
+          );
 
-        // context.drawImage(this.kiBlast1, 0, 0);
+          this.kiBlastArray.push(
+            new Blast(
+              this.x + 5,
+              this.y,
+              50,
+              50,
+              "./images/kiBlast1.png",
+              this.context,
+              { x: 1, y: 1 }
+            )
+          );
+
         default:
           console.log("Are you even moving?!?!");
       }

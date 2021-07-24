@@ -1,7 +1,3 @@
-// const canvas = document.querySelector("canvas");
-// console.log(canvas);
-// const context = canvas.getContext("2d");
-
 class Game {
   constructor(canvas, context) {
     this.canvas = canvas;
@@ -23,17 +19,9 @@ class Game {
       "./images/enemies/topp1.png",
       this.context
     );
+
     this.background = new Image();
     this.background.src = "./images/Namek.png";
-    this.score = 0;
-    this.blast = new Blast(
-      500,
-      100,
-      50,
-      50,
-      "./images/enemies/topp1.png",
-      this.context
-    );
   }
 
   start() {
@@ -46,12 +34,14 @@ class Game {
     this.drawBackground();
     this.player.draw();
     this.enemy1.draw();
+    console.log(this.player.kiBlastArray);
 
-    addEventListener("click", (event) => {
-      console.log(event);
-      // const blast = this.blast;
-    });
-
+    if (this.player.blast) {
+      this.player.kiBlastArray.forEach((kiBlast) => {
+        kiBlast.drawBlast();
+        kiBlast.x += 5;
+      });
+    }
     requestAnimationFrame(() => {
       this.drawLoop();
     });
