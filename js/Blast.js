@@ -12,10 +12,4 @@ class Blast {
   drawBlast() {
     this.context.drawImage(this.img, this.x, this.y, this.w, this.h);
   }
-
-  update(enemyX, enemyY) {
-    this.drawBlast();
-    this.x = enemyX + this.velocity.x;
-    this.y = enemyY + this.velocity.y;
-  }
 }
