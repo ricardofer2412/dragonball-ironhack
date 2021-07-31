@@ -90,7 +90,7 @@ class Player {
         case "ArrowUp":
           if (this.y > 50) this.y -= 50;
           // this.flyUp();
-          this.img.src = "../images/gokuUp.png";
+          this.img.src = "images/gokuUp.png";
           this.w = 40;
           this.h = 75;
           break;
