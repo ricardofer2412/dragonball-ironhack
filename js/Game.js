@@ -29,45 +29,28 @@ class Game {
     this.startImg.src = "./images/startImg.jpeg";
     this.startLogo = new Image();
     this.startLogo.src = "./images/canvastart.png";
-
     this.startGameButton = document.getElementById("start-button");
   }
 
-  //start game
-  start() {
-    window.onload = () => {
-      this.context.drawImage(this.startImg, 0, 0, 1000, 500);
-      this.context.drawImage(this.startLogo, 250, 125, 500, 100);
-      this.context.font = "25px Georgia";
-      this.context.fillStyle = "#b80000";
-      this.context.fillText(
-        "Use Up or Down Arrow to move player. Use SpaceBar to fire blast",
-        125,
-        400
-      );
-      document.getElementById("start-button").onclick = () => {
-        this.drawLoop();
-        this.player.move(this.enemy1.x, this.enemy1.y);
+  randomPlayerMove() {
+    this.player.move(this.enemy1.x, this.enemy1.y);
 
-        if (this.enemy1.health > 60) {
-          setInterval(() => {
-            this.enemy1.randomMove();
-            this.enemy1.enemyBlast();
-          }, 500);
-        } else if (this.enemy1.health > 59) {
-          setInterval(() => {
-            this.enemy1.randomMove();
-            this.enemy1.enemyBlast();
-          }, 2000);
-        } else if (this.enemy1.health < 35) {
-          setInterval(() => {
-            this.enemy1.randomMove();
-            this.enemy1.enemyBlast();
-          }, 500);
-        }
-        this.startGameButton.style.display = "none";
-      };
-    };
+    if (this.enemy1.health > 60) {
+      setInterval(() => {
+        this.enemy1.randomMove();
+        this.enemy1.enemyBlast();
+      }, 500);
+    } else if (this.enemy1.health > 59) {
+      setInterval(() => {
+        this.enemy1.randomMove();
+        this.enemy1.enemyBlast();
+      }, 2000);
+    } else if (this.enemy1.health < 35) {
+      setInterval(() => {
+        this.enemy1.randomMove();
+        this.enemy1.enemyBlast();
+      }, 500);
+    }
   }
 
   enemy1Health() {
@@ -109,7 +92,6 @@ class Game {
     //   this.enemy1.y += this.enemy1.randomMoveY;
     // }
     // }, 2000);
-
     this.enemy1.draw();
     if (this.enemy1.enemyAttackKi) {
       this.enemy1.enemyKiBlastArray.forEach((enemyKiBlastAttack) => {
@@ -180,6 +162,12 @@ class Game {
       this.context.fillText("YOU LOSE", 380, 400);
     }
     this.startGameButton.style.display = "block";
+
+    // document.getElementById("start-button").onclick = () => {
+    //   this.drawLoop();
+
+    //   this.startGameButton.style.display = "none";
+    // };
   }
   drawBackground() {
     this.context.drawImage(
