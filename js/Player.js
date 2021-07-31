@@ -10,7 +10,7 @@ class Player {
     this.blast;
     this.kiBlastArray = [];
     this.enemyKiBlastArray = [];
-    this.health = 10;
+    this.health = health;
     this.randomMoveX = 0;
     this.randomMoveY = 0;
     this.enemyAttackKi;
