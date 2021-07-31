@@ -75,18 +75,18 @@ class Player {
 
     document.addEventListener("keydown", (event) => {
       switch (event.code) {
-        case "ArrowRight":
-          if (this.x < 900 && this.x !== enemyX - 50) this.x += 50;
-          this.img.src = "../images/goku2.png";
-          this.w = 40;
-          this.h = 75;
-          break;
-        case "ArrowLeft":
-          if (this.x > 50) this.x -= 50;
-          this.img.src = "../images/gokuBack.png";
-          this.w = 40;
-          this.h = 75;
-          break;
+        // case "ArrowRight":
+        //   if (this.x < 900 && this.x !== enemyX - 50) this.x += 50;
+        //   this.img.src = "../images/goku2.png";
+        //   this.w = 40;
+        //   this.h = 75;
+        //   break;
+        // case "ArrowLeft":
+        //   if (this.x > 50) this.x -= 50;
+        //   this.img.src = "../images/gokuBack.png";
+        //   this.w = 40;
+        //   this.h = 75;
+        //   break;
         case "ArrowUp":
           if (this.y > 50) this.y -= 50;
           // this.flyUp();

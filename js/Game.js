@@ -25,32 +25,49 @@ class Game {
     this.background = new Image();
     this.background.src = "./images/tournament.png";
     this.enemyAttackKi;
-    this.myAudio = document.createElement("audio");
-    this.myAudio.src = "audio/themeAudio.wav";
+    this.startImg = new Image();
+    this.startImg.src = "./images/startImg.jpeg";
+    this.startLogo = new Image();
+    this.startLogo.src = "./images/canvastart.png";
+
+    this.startGameButton = document.getElementById("start-button");
   }
 
   //start game
   start() {
-    this.drawLoop();
-    this.myAudio.play();
-    this.player.move(this.enemy1.x, this.enemy1.y);
+    window.onload = () => {
+      this.context.drawImage(this.startImg, 0, 0, 1000, 500);
+      this.context.drawImage(this.startLogo, 250, 125, 500, 100);
+      this.context.font = "25px Georgia";
+      this.context.fillStyle = "#b80000";
+      this.context.fillText(
+        "Use Up or Down Arrow to move player. Use SpaceBar to fire blast",
+        125,
+        400
+      );
+      document.getElementById("start-button").onclick = () => {
+        this.drawLoop();
+        this.player.move(this.enemy1.x, this.enemy1.y);
 
-    if (this.enemy1.health > 60) {
-      setInterval(() => {
-        this.enemy1.randomMove();
-        this.enemy1.enemyBlast();
-      }, 1000);
-    } else if (this.enemy1.health > 59) {
-      setInterval(() => {
-        this.enemy1.randomMove();
-        this.enemy1.enemyBlast();
-      }, 2000);
-    } else if (this.enemy1.health < 35) {
-      setInterval(() => {
-        this.enemy1.randomMove();
-        this.enemy1.enemyBlast();
-      }, 500);
-    }
+        if (this.enemy1.health > 60) {
+          setInterval(() => {
+            this.enemy1.randomMove();
+            this.enemy1.enemyBlast();
+          }, 500);
+        } else if (this.enemy1.health > 59) {
+          setInterval(() => {
+            this.enemy1.randomMove();
+            this.enemy1.enemyBlast();
+          }, 2000);
+        } else if (this.enemy1.health < 35) {
+          setInterval(() => {
+            this.enemy1.randomMove();
+            this.enemy1.enemyBlast();
+          }, 500);
+        }
+        this.startGameButton.style.display = "none";
+      };
+    };
   }
 
   enemy1Health() {
@@ -156,12 +173,13 @@ class Game {
     this.context.fillText("GAME OVER", 200, 250);
     if (this.enemy1.health === 0) {
       this.context.font = "50px Georagia";
-      this.context.fillText("YOU WIN", 350, 350);
+      this.context.fillText("YOU WIN", 380, 400);
     }
     if (this.player.health === 0) {
       this.context.font = "50px Georagia";
-      this.context.fillText("YOU LOSE", 350, 350);
+      this.context.fillText("YOU LOSE", 380, 400);
     }
+    this.startGameButton.style.display = "block";
   }
   drawBackground() {
     this.context.drawImage(
