@@ -77,7 +77,7 @@ class Game {
   enemyAttack() {
     this.enemy1.enemyBlast();
   }
-  //game loop
+
   drawLoop() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.drawBackground();
@@ -85,13 +85,6 @@ class Game {
     this.playerHealth();
     this.player.draw();
 
-    // setInterval(() => {
-    // this.enemy1.randomMove(this.canvas.width, this.canvas.height);
-    // if (this.enemy1.randomMoveX || this.enemy1.randomMoveY) {
-    //   this.enemy1.x += this.enemy1.randomMoveX;
-    //   this.enemy1.y += this.enemy1.randomMoveY;
-    // }
-    // }, 2000);
     this.enemy1.draw();
     if (this.enemy1.enemyAttackKi) {
       this.enemy1.enemyKiBlastArray.forEach((enemyKiBlastAttack) => {
@@ -115,14 +108,12 @@ class Game {
         }
       });
     }
-    //Loops each item of the KiBlast Array
     if (this.player.blast) {
       this.player.kiBlastArray.forEach((kiBlast) => {
         kiBlast.drawBlast();
         kiBlast.x += 5;
       });
 
-      //collision Loop
       this.player.kiBlastArray.forEach((kiBlast, index) => {
         const dist = Math.hypot(
           kiBlast.x - this.enemy1.x,
@@ -138,7 +129,6 @@ class Game {
           this.gameOver();
         }
       });
-      //Player Collision
     }
 
     if (this.enemy1.health > 0 && this.player.health > 0) {
@@ -162,12 +152,6 @@ class Game {
       this.context.fillText("YOU LOSE", 380, 400);
     }
     this.startGameButton.style.display = "block";
-
-    // document.getElementById("start-button").onclick = () => {
-    //   this.drawLoop();
-
-    //   this.startGameButton.style.display = "none";
-    // };
   }
   drawBackground() {
     this.context.drawImage(
@@ -179,5 +163,3 @@ class Game {
     );
   }
 }
-
-// Uncaught ReferenceError: Game is not defined

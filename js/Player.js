@@ -25,22 +25,7 @@ class Player {
 
     this.y = random;
 
-    this.img.src = "images/enemies/topp1.png";
-
-    // const randomNum = Math.floor(Math.random() * 100);
-    // if (randomNum % 30 === 0) {
-    //   this.randomMoveX =
-    //     Math.floor(Math.random() * width) % 5 === 0
-    //       ? Math.floor(Math.random() * 5)
-    //       : -Math.floor(Math.random() * 5);
-    //   this.randomMoveY =
-    //     Math.floor(Math.random() * height) % 5 === 0
-    //       ? Math.floor(Math.random() * 5)
-    //       : -Math.floor(Math.random() * 5);
-    // } else if (randomNum % 5 === 0) {
-    //   this.randomMoveX = 0;
-    //   this.randomMoveY = 0;
-    // }
+    this.img.src = "images/enemies/attack1.png";
   }
   enemyBlast() {
     this.enemyAttackKi = new Blast(
@@ -75,21 +60,8 @@ class Player {
 
     document.addEventListener("keydown", (event) => {
       switch (event.code) {
-        // case "ArrowRight":
-        //   if (this.x < 900 && this.x !== enemyX - 50) this.x += 50;
-        //   this.img.src = "../images/goku2.png";
-        //   this.w = 40;
-        //   this.h = 75;
-        //   break;
-        // case "ArrowLeft":
-        //   if (this.x > 50) this.x -= 50;
-        //   this.img.src = "../images/gokuBack.png";
-        //   this.w = 40;
-        //   this.h = 75;
-        //   break;
         case "ArrowUp":
           if (this.y > 50) this.y -= 50;
-          // this.flyUp();
           this.img.src = "images/gokuUp.png";
           this.w = 40;
           this.h = 75;
