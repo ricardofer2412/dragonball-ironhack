@@ -70,7 +70,7 @@ class Player {
 
   move(enemyX, enemyY) {
     document.addEventListener("keyup", (event) => {
-      this.img.src = "../images/goku1.png";
+      this.img.src = "images/goku1.png";
     });
 
     document.addEventListener("keydown", (event) => {
@@ -96,18 +96,18 @@ class Player {
           break;
         case "ArrowDown":
           if (this.y < 400) this.y += 50;
-          this.img.src = "../images/gokuDown.png";
+          this.img.src = "images/gokuDown.png";
           this.w = 40;
           this.h = 75;
           break;
         case "Space":
-          this.img.src = "../images/gokuAttack.png";
+          this.img.src = "images/gokuAttack.png";
           this.blast = new Blast(
             this.x + 2,
             this.y,
             50,
             50,
-            "./images/kiBlast1.png",
+            "images/kiBlast1.png",
             this.context,
             {
               x: 1,
